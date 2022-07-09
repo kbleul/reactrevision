@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import ToggleBtns from "./toggleTheme";
+import FirstBox from './components/firstbox'
+import SecondBox from './components/secondbox'
+import {useTheme} from './themeContext'
 
-function App() {
+
+
+export default function App() {
+
+  const theme = useTheme()
+
+  const rootStyle = {
+    backgroundColor: theme === "light" ? "blue" : "red",
+    height : "100vh"
+  }
+
+  console.log(theme)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <article style={rootStyle}>
+        <div>React Revision : useContext</div>
+        <ToggleBtns />
+        <FirstBox />
+        <SecondBox />
+    </article>
+
   );
 }
 
-export default App;
+
+
+
