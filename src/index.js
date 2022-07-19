@@ -2,10 +2,10 @@ import React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import {ThemeProvider } from './themeContext'
 
-import App from './App';
+import Apptwo from './Apptwo';
 
 
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
-root.render(<ThemeProvider><App /></ThemeProvider>);
+root.render(<Apptwo />);
