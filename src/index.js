@@ -1,6 +1,6 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom/client';
-import {ThemeProvider } from './themeContext'
+//import {ThemeProvider } from './themeContext'
 
 import Apptwo from './Apptwo';
 

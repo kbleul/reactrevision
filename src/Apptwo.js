@@ -1,6 +1,8 @@
 
-import {useReducer, useState} from "react"
+import {useReducer, useState , useRef} from "react"
 import Todo from "./Todo"
+import Custominput from "./custominput"
+import Modulebox from "./modulebox"
 
 export const ACTION = {
     ADDTODO : "add_todo",
@@ -30,14 +32,15 @@ function reducer (todos , action) {
 
 }
 
-function createTodo(todo) { 
-    return {id : Date.now() , text : todo , complete : false}
-}
+function createTodo(todo) {   return {id : Date.now() , text : todo , complete : false}   }
 
 export default function Apptwo() {
 
     const [todo , settodo] = useState("")
+    const [isopen, set_isopen] = useState(false)
     const [todos , dispatch] = useReducer(reducer , [])
+    const input = useRef()
+    const moduleref = useRef()
 
     const addTodo = () => { 
         settodo("");
@@ -50,5 +53,18 @@ export default function Apptwo() {
         <button onClick={(() => addTodo())}>+</button>
 
         {todos.map(el => { return <Todo key={el.id} todo={el} dispatch={dispatch} settodo={settodo}/>})}
+
+        <Custominput ref={input}/>
+        <button onClick={() => input.current.alerthi()}>focus</button>
+        <br />
+
+        <button onClick={() => set_isopen(!isopen)}>toggle</button>
+        <button onClick={() => moduleref.current.boxone_text()}>Para one</button>
+        <button onClick={() => moduleref.current.boxtwo_text()}>Para two</button>
+        <button onClick={() => moduleref.current.boxthree_text()}>Para three</button>
+        <button onClick={() => moduleref.current.boxfour_text()}>Para four</button>
+
+        { isopen && <Modulebox ref = {moduleref}/> }
+
         </article>)
 }
