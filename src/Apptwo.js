@@ -3,6 +3,7 @@ import {useReducer, useState , useRef} from "react"
 import Todo from "./Todo"
 import Custominput from "./custominput"
 import Modulebox from "./modulebox"
+import useConsoleler from "./useConsoleler"
 
 export const ACTION = {
     ADDTODO : "add_todo",
@@ -47,7 +48,8 @@ export default function Apptwo() {
         dispatch({type : ACTION.ADDTODO, payload : {todo_txt : todo}})
     }
 
-    console.log(todos)
+    useConsoleler(isopen)
+
     return (<article>
         <input value={todo} type = "text" onChange = { e => settodo(e.target.value)}/>
         <button onClick={(() => addTodo())}>+</button>
